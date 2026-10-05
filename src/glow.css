@@ -1,0 +1,90 @@
+.glow {
+    position: relative;
+    transition-duration: .2s;
+    background: none;
+    text-decoration: none;
+    user-select: none;
+    z-index: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.glow span {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 11;
+    border-radius: 7px;
+}
+
+.glow:before,
+.glow:after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    border-radius: 10px;
+    /*background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094,*/
+    /*#0000ff, #00ff00, #ffff00, #ff0000);*/
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: move_142 20s linear infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+    .glow:before,
+    .glow:after {
+        background: linear-gradient(45deg, var(--color-dark-primary), var(--color-dark-error));
+        content: '';
+        position: absolute;
+        left: -2px;
+        top: -2px;
+        border-radius: 10px;
+        background-size: 400%;
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        z-index: -1;
+        animation: move_142 20s linear infinite;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .glow:before,
+    .glow:after {
+        background: linear-gradient(45deg, var(--color-light-primary), var(--color-light-secondary), var(--color-light-primary));
+        content: '';
+        position: absolute;
+        left: -2px;
+        top: -2px;
+        border-radius: 10px;
+        background-size: 400%;
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        z-index: -1;
+        animation: move_142 2s linear infinite;
+    }
+}
+
+@keyframes move_142 {
+    0% {
+        background-position: 0 0;
+    }
+
+    75% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.glow:after {
+    filter: blur(50px);
+}
